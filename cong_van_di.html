@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/icon/font/bootstrap-icons.min.css">
+    <script src="/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="/jQuery/jQuery.js"></script>
+    <title>Quản lí công văn đi</title>
+    <style>
+         body {
+            overflow-x: hidden;
+            background-color: #e9eef6;
+            background-image: url('/web/images/bgquanlicongvandi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .thanh_dieu_huong{
+            background-color: #EF4E2B;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo{
+            height: 30px;
+            width: 150px;
+        }
+        .icon_tdh{
+            color: white;
+        }
+        .hover_icon_tdh:hover{
+            border-radius: 10px;
+            background-color:#689ceb;
+        }
+        .avatar{
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .dropdown-toggle{
+            color: white;
+        }
+        .hover_nguyen_anh_duc:hover{
+            color: #689ceb;
+        }
+        .padding_dr{
+            padding-left: 20%;
+        }
+        .hover_xhs_dx:hover{
+            background-color: #e1e1e1;
+        }
+        .color_xhs_dx{
+            color: black;
+        }
+        .hover_a_dx:hover{
+            color: red;
+        }
+        .sidebar {
+            position: fixed;
+            top: 73px;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 20px 0; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #6a94be; 
+            width: 250px;
+            overflow-y: auto;
+        }
+        .main{
+            max-height: 89vh;
+            overflow-y: auto;
+        }
+        .color_quan_li{
+            color: white;
+        }
+        .hover_quan_li:hover{
+            background-color: #8cb1e8;
+        }
+        .mac_dinh{
+            background-color: #8cb1e8;
+        }
+        .header{
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .table thead th {
+        position: sticky;
+        top: 0;
+        z-index: 0;
+        }
+        .modal-image {
+        width: 100%;
+        height: auto; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm thanh_dieu_huong">
+            <div class="container-fluid">
+    
+                <ul class="navbar-nav">
+                    <li class="nav-item p-2">
+                        <a class="nav-item" href="trang_chu.html">
+                            <img class="logo" src="/web/images/logo.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+    
+                <ul class="navbar-nav d-flex justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link hover_icon_tdh mt-2" href="#" title="Thông báo" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Không có thông báo!"><i class="bi bi-bell icon_tdh"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hover_icon_tdh mt-2" href="#"><i class="bi bi-sun icon_tdh"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#">
+                            <img class="avatar" src="/web/images/avatar.jpg" alt="">
+                            <span>Nguyễn Anh Đức</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><h5 class="dropdown-header  padding_dr">Quản trị viên</h5></li>
+                            <li class="hover_xhs_dx">
+                                <a class="nav-link border-top color_xhs_dx" href="#"><i class="bi bi-person me-2"></i>Xem hồ sơ</a>
+                            </li>
+                            <li class="hover_xhs_dx">
+                                <a class="nav-link border-top color_xhs_dx hover_a_dx" href="dang_nhap.html"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="container-fluid">
+        <div class="row">
+            <!--sidebar-->
+            <nav class="navbar sidebar col-md-3 col-lg-2 d-md-block d-none">
+                <div class="positon-sticky">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item p-3 hover_quan_li  d-flex">
+                            <i class="bi bi-envelope-arrow-down pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="cong_van_den.html">Quản lí công văn đến</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li mac_dinh d-flex">
+                            <i class="bi bi-envelope-arrow-up pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="cong_van_di.html">Quản lí công văn đi</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-file-earmark-bar-graph pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_du_an.html">Quản lí dự án</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-building pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_cong_viec.html">Quản lí công việc</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-file-earmark-text pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_tai_lieu.html">Quản lí tài liệu</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--Main content-->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main">
+              <div class="container-fluid row mt-3 mb-3">
+                <div class="col-md-3">
+                  <div class="rounded bg-primary">
+                    <div class="d-flex justify-content-center"><i class="bi bi-bookmark-fill" style="font-size: 60px; color: #e6c8c1;"></i></div>
+                    <div class="d-flex justify-content-center" style="font-size: 25px;">30</div>
+                    <div class="d-flex justify-content-center" style="font-size: 20px;">TỔNG SỐ CÔNG VĂN</div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                  <div class="rounded bg-success">
+                    <div class="d-flex justify-content-center"><i class="bi bi-bookmark-check-fill" style="font-size: 60px; color: #e6c8c1;"></i></div>
+                    <div class="d-flex justify-content-center" style="font-size: 25px;">4</div>
+                    <div class="d-flex justify-content-center" style="font-size: 20px;">CÔNG VĂN HÔM NAY</div>
+                  </div>
+                </div>
+              </div>
+                <!--thanh tim kiem-->
+                <div class="container mt-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input id="timkiem" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm...">
+                                <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+                            </div>
+                        </div>
+                        <div class="col-md-8 d-flex">
+                            <button class="btn btn-primary" type="button"><a class="nav-link text-white" href="them_cong_van_di.html"><i class="bi bi-plus"></i>Thêm công văn mới</a></button>
+                            <button id="deleteBtn" class="btn btn-danger ms-2" type="button"><i class="bi bi-trash me-2"></i>Xóa</button>
+                            <div class="dropdown">
+                                <button type="button" class="btn btn-success dropdown-toggle ms-2" data-bs-toggle="dropdown">
+                                    Bộ lọc
+                                  </button>                                
+                                  <ul class="dropdown-menu">
+                                  <li><a id="tat-ca" class="dropdown-item text-dark" href="#">Tất cả</a></li>
+                                  <li><a id="da-duyet" class="dropdown-item text-success" href="#">Đã duyệt</a></li>
+                                  <li><a id="chua-duyet" class="dropdown-item text-danger" href="#">Chưa duyệt</a></li>
+                                </ul>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <!--noi dung bang-->
+                <div class="container mt-4">
+                    <div class="table-responsive overflow-auto" style="max-height: 450px;">
+                      <table id="mytable" class="table table-hover table-bordered">
+                        <thead>
+                          <tr class="table-success">
+                            <th scope="col"></th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nội dung</th>
+                            <th scope="col">Ngày đến</th>
+                            <th scope="col">Nơi ban hành</th>
+                            <th scope="col">Số ký hiệu</th>
+                            <th scope="col">Lĩnh vực</th>
+                            <th scope="col">Loại</th>
+                            <th scope="col">Người duyệt</th>
+                            <th scope="col">Ngày hết hiệu lực</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Thao tác</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody id="table-body">
+                          <tr class="chua-duyet">
+                            <td><button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>01</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>ABC</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-danger status">Chưa duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#xemchitiet1">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                          <tr class="da-duyet">
+                            <td><button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>02</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>DEF</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-success">Đã duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#xemchitiet2">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                          <tr class="chua-duyet">
+                            <td><button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>03</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>QWE</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-danger status">Chưa duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#xemchitiet3">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                          <tr class="da-duyet">
+                            <td><button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>04</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>RTY</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-success">Đã duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#xemchitiet4">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                          <tr class="chua-duyet">
+                            <td><button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>05</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>UIO</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-danger status">Chưa duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#xemchitiet5">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                          <tr class="chua-duyet">
+                            <td>
+                              <button id="mark-button" type="button" class="btn btn-success move-to-top">
+                                <i class="bi bi-star "></i>
+                              </button>
+                            </td>
+                            <td>06</td>
+                            <td>Đổi mới gd</td>
+                            <td>20-01-2024</td>
+                            <td>Phòng hành chính</td>
+                            <td>GHJ</td>
+                            <td>Giáo dục</td>
+                            <td>Công văn</td>
+                            <td>Quản trị viên</td>
+                            <td>29-01-2024</td>
+                            <td><span class="text-danger status">Chưa duyệt</span></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-view" data-bs-toggle="modal" data-bs-target="#xemchitiet6">
+                                    <i class="bi bi-eye me-2"></i>Xem chi tiết </button>
+                            </td>
+                                 
+                            <td><input type="checkbox" class="row-checkbox"></td>
+                          </tr>
+                         
+
+                          <!-- Thêm các hàng khác tương tự -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+          return new bootstrap.Popover(popoverTriggerEl)
+        })
+
+        $(document).ready(function(){
+        $("#timkiem").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#table-body tr").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+        });
+
+        $(document).ready(function(){
+        $('#deleteBtn').click(function(){
+        var checkedRows = $('.row-checkbox:checked').closest('tr');
+        if(checkedRows.length > 0){
+            $('#confirmationModal').modal('show');
+        } else {
+            alert('Vui lòng chọn ít nhất một hàng để xóa.');
+        }
+        });
+
+        $('#confirmDelete').click(function(){
+        var checkedRows = $('.row-checkbox:checked').closest('tr');
+        checkedRows.remove();
+        $('#confirmationModal').modal('hide');
+        });
+        });
+
+        $(document).ready(function() {
+    $('.move-to-top').click(function() {
+      var row = $(this).closest('tr');
+      if (confirm("Xác nhận?")) {
+        row.insertBefore($('#mytable tbody tr:first'));
+      }
+    });
+  });
+
+  $(document).ready(function() {
+      $('.move-to-top').click(function() {
+        $(this).toggleClass('btn-success btn-success');
+        $(this).find('i').toggleClass('bi-star bi-star-fill');
+        var row = $(this).closest('tr');
+        row.insertBefore(row.parent().find('tr:first'));
+      });
+    });
+    $(document).ready(function(){
+      $("#tat-ca").click(function(){
+        $("tr").show();
+      });
+      $("#da-duyet").click(function(){
+        $("tr").hide();
+        $("tr.da-duyet").show();
+        $("thead tr").show();
+      });
+      $("#chua-duyet").click(function(){
+        $("tr").hide();
+        $("tr.chua-duyet").show();
+        $("thead tr").show();
+      });
+    })
+    $(document).ready(function() {
+  var currentRow;
+
+  // Khi ấn vào nút "Xem chi tiết"
+  $('.btn-view').on('click', function() {
+    currentRow = $(this).closest('tr');
+    $('#xemchitiet1').modal('show');
+  });
+
+  // Khi ấn vào nút "Duyệt" trong modal
+  $('.duyet').on('click', function() {
+    alert('Duyệt thành công');
+    currentRow.find('.status').removeClass('text-danger').text('Đã duyệt').addClass('text-success');
+    $('#xemchitiet1').modal('hide');
+  });
+});
+    </script>
+
+    <!--modal-->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmationModalLabel">Xác nhận Xóa</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Bạn có chắc chắn muốn xóa các hàng đã chọn không?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-danger" id="confirmDelete">Xác nhận</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!--modal-->
+  <div class="modal" id="xemchitiet1">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+  
+   
+        <div class="modal-header" style="background-color: #abc0de;">
+          <h4 class="modal-title">Chi tiết công văn - <span class="text-danger">Chưa duyệt</span></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+      
+        <div class="modal-body">
+          <div class="row container-fluid">
+            <div class="col-md-6 col-12">
+                <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+                <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+                <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+                <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+                <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+                <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+                <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+                <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+                <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-12 mt-3">
+                <div>Tệp đính kèm:</div>
+                <img src="/web/images/congvan.png" alt="" class="modal-image">
+            </div>
+          </div>
+        </div>
+  
+ 
+        <div class="modal-footer" style="background-color: #abc0de;">
+          <button type="button" class="btn btn-success duyet" data-bs-dismiss="modal">Duyệt</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!--modal-->
+<!--modal-->
+<div class="modal" id="xemchitiet2">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+  
+   
+        <div class="modal-header" style="background-color: #abc0de;">
+          <h4 class="modal-title">Chi tiết công văn - <span class="text-success">Đã duyệt</span></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+      
+        <div class="modal-body">
+          <div class="row container-fluid">
+            <div class="col-md-6 col-12">
+                <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+                <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+                <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+                <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+                <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+                <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+                <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+                <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+                <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-12 mt-3">
+                <div>Tệp đính kèm:</div>
+                <img src="/web/images/congvan.png" alt="" class="modal-image">
+            </div>
+          </div>
+        </div>
+  
+ 
+        <div class="modal-footer" style="background-color: #abc0de;">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!--modal-->
+   <!--modal-->
+<div class="modal" id="xemchitiet3">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+ 
+      <div class="modal-header" style="background-color: #abc0de;">
+        <h4 class="modal-title">Chi tiết công văn - <span class="text-danger">Chưa duyệt</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="row container-fluid">
+          <div class="col-md-6 col-12">
+              <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+              <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+              <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+              <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+              <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-6 col-12">
+              <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+              <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+              <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+              <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+              <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-12 mt-3">
+              <div>Tệp đính kèm:</div>
+              <img src="/web/images/congvan.png" alt="" class="modal-image">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer" style="background-color: #abc0de;">
+        <button type="button" class="btn btn-success duyet" data-bs-dismiss="modal">Duyệt</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--modal-->
+  <!--modal-->
+  <div class="modal" id="xemchitiet4">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+  
+   
+        <div class="modal-header" style="background-color: #abc0de;">
+          <h4 class="modal-title">Chi tiết công văn - <span class="text-success">Đã duyệt</span></h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+      
+        <div class="modal-body">
+          <div class="row container-fluid">
+            <div class="col-md-6 col-12">
+                <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+                <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+                <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+                <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+                <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+                <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+                <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+                <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+                <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+                <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+            </div>
+            <div class="col-md-12 mt-3">
+                <div>Tệp đính kèm:</div>
+                <img src="/web/images/congvan.png" alt="" class="modal-image">
+            </div>
+          </div>
+        </div>
+  
+ 
+        <div class="modal-footer" style="background-color: #abc0de;">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!--modal-->
+  <!--modal-->
+<div class="modal" id="xemchitiet5">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+ 
+      <div class="modal-header" style="background-color: #abc0de;">
+        <h4 class="modal-title">Chi tiết công văn - <span class="text-danger">Chưa duyệt</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="row container-fluid">
+          <div class="col-md-6 col-12">
+              <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+              <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+              <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+              <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+              <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-6 col-12">
+              <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+              <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+              <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+              <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+              <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-12 mt-3">
+              <div>Tệp đính kèm:</div>
+              <img src="/web/images/congvan.png" alt="" class="modal-image">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer" style="background-color: #abc0de;">
+        <button type="button" class="btn btn-success duyet" data-bs-dismiss="modal">Duyệt</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--modal-->
+<!--modal-->
+<div class="modal" id="xemchitiet6">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+ 
+      <div class="modal-header" style="background-color: #abc0de;">
+        <h4 class="modal-title">Chi tiết công văn - <span class="text-danger">Chưa duyệt</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+    
+      <div class="modal-body">
+        <div class="row container-fluid">
+          <div class="col-md-6 col-12">
+              <div>Số văn bản: <input disabled class="form-control" type="text" name="" id="" value="Công văn đến" style="max-width: 300px;"></div>
+              <div>Loại công văn: <input disabled class="form-control" type="text" name="" id="" value="Công văn" style="max-width: 300px;"></div>
+              <div>Lĩnh vực: <input disabled class="form-control" type="text" name="" id="" value="Giáo dục" style="max-width: 300px;"></div>
+              <div>Ký hiệu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Ngày ban hành: <input disabled class="form-control" type="text" name="" id="" value="20-01-2024" style="max-width: 300px;"></div>
+              <div>Ngày hết hiệu lực: <input disabled class="form-control" type="text" name="" id="" value="29-01-2024" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-6 col-12">
+              <div>Người gửi: <input disabled class="form-control" type="text" name="" id="" value="Công ty X" style="max-width: 300px;"></div>
+              <div>Người duyệt: <input disabled class="form-control" type="text" name="" id="" value="Quản trị viên" style="max-width: 300px;"></div>
+              <div>Nơi tiếp nhận: <input disabled class="form-control" type="text" name="" id="" value="Phòng hành chính" style="max-width: 300px;"></div>
+              <div>Số trang: <input disabled class="form-control" type="text" name="" id="" value="2" style="max-width: 300px;"></div>
+              <div>Trích yếu: <input disabled class="form-control" type="text" name="" id="" value="0000" style="max-width: 300px;"></div>
+              <div>Nội dung: <input disabled class="form-control" type="text" name="" id="" value="ABCDEF" style="max-width: 300px;"></div>
+          </div>
+          <div class="col-md-12 mt-3">
+              <div>Tệp đính kèm:</div>
+              <img src="/web/images/congvan.png" alt="" class="modal-image">
+          </div>
+        </div>
+      </div>
+
+
+      <div class="modal-footer" style="background-color: #abc0de;">
+        <button type="button" class="btn btn-success duyet" data-bs-dismiss="modal">Duyệt</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--modal-->
+    
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/icon/font/bootstrap-icons.min.css">
+    <script src="/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="/jQuery/jQuery.js"></script>
+    <script src="/bootstrap5/js/bootstrap-datepicker.min.js"></script>
+    <title>Quản lí công văn đến</title>
+    <style>
+         body {
+            overflow-x: hidden;
+            background-color: #e9eef6;
+            background-image: url('/web/images/bgthemcongvan.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .thanh_dieu_huong{
+            background-color: #EF4E2B;
+        }
+        .logo{
+            height: 30px;
+            width: 150px;
+        }
+        .icon_tdh{
+            color: white;
+        }
+        .hover_icon_tdh:hover{
+            border-radius: 10px;
+            background-color:#689ceb;
+        }
+        .avatar{
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        .dropdown-toggle{
+            color: white;
+        }
+        .hover_nguyen_anh_duc:hover{
+            color: #689ceb;
+        }
+        .padding_dr{
+            padding-left: 20%;
+        }
+        .hover_xhs_dx:hover{
+            background-color: #e1e1e1;
+        }
+        .color_xhs_dx{
+            color: black;
+        }
+        .hover_a_dx:hover{
+            color: red;
+        }
+        .sidebar {
+            position: fixed;
+            top: 73px;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            padding: 20px 0; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #6a94be; 
+            width: 250px;
+            overflow-y: auto;
+        }
+        .main{
+            max-height: 89vh;
+            overflow-y: auto;
+        }
+        .color_quan_li{
+            color: white;
+        }
+        .hover_quan_li:hover{
+            background-color: #8cb1e8;
+        }
+        .mac_dinh{
+            background-color: #8cb1e8;
+        }
+        .modal-image {
+        width: 100%;
+        height: auto; 
+        }
+        .main{
+            position: sticky;
+            top: 73px;
+            
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm thanh_dieu_huong">
+            <div class="container-fluid">
+    
+                <ul class="navbar-nav">
+                    <li class="nav-item p-2">
+                        <a class="nav-item" href="trang_chu.html">
+                            <img class="logo" src="/web/images/logo.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+    
+                <ul class="navbar-nav d-flex justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link hover_icon_tdh mt-2" href="#" title="Thông báo" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-content="Không có thông báo!"><i class="bi bi-bell icon_tdh"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hover_icon_tdh mt-2" href="#"><i class="bi bi-sun icon_tdh"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#">
+                            <img class="avatar" src="/web/images/avatar.jpg" alt="">
+                            <span>Nguyễn Anh Đức</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><h5 class="dropdown-header  padding_dr">Quản trị viên</h5></li>
+                            <li class="hover_xhs_dx">
+                                <a class="nav-link border-top color_xhs_dx" href="#"><i class="bi bi-person me-2"></i>Xem hồ sơ</a>
+                            </li>
+                            <li class="hover_xhs_dx">
+                                <a class="nav-link border-top color_xhs_dx hover_a_dx" href="dang_nhap.html"><i class="bi bi-box-arrow-right me-2"></i>Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!--sidebar-->
+            <nav class="navbar sidebar col-md-3 col-lg-2 d-md-block d-none">
+                <div class="positon-sticky">
+                    <ul class="navbar-nav flex-column">
+                        <li class="nav-item p-3 hover_quan_li mac_dinh d-flex">
+                            <i class="bi bi-envelope-arrow-down pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="cong_van_den.html">Quản lí công văn đến</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-envelope-arrow-up pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="cong_van_di.html">Quản lí công văn đi</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-file-earmark-bar-graph pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_du_an.html">Quản lí dự án</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-building pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_cong_viec.html">Quản lí công việc</a>
+                        </li>
+                        <li class="nav-item p-3 hover_quan_li d-flex">
+                            <i class="bi bi-file-earmark-text pt-2 me-2 text-white"></i>
+                            <a class="nav-link text-white" href="quan_li_tai_lieu.html">Quản lí tài liệu</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--Main content-->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main">
+                <div class="container-fluid row mt-3 mb-3">
+                    <div class="col-md-3">
+                        <div class="rounded bg-primary d-flex justify-content-center">
+                            <i class="bi bi-bookmark-star-fill text-white" style="font-size: 40px;"></i>
+                            <div class="mt-2 ms-2 text-white" style="font-size: 23px;">Thêm công văn mới</div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="cong_van_den.html" class="nav-link">
+                            <button class="btn btn-danger" type="button">Quay lại</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row container-fluid">
+                   <div class=" col-12 col-md-6 col-lg-4 mt-4 rounded" style="background-color: #ceedc7;">
+                    <table>
+                        <tr>
+                            <td style="padding-right: 20px;">Danh mục</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Công văn đến</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Loại</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Công văn</option>
+                                    <option>Chỉ thị</option>
+                                    <option>Nhắc nhở</option>
+                                    <option>Đề nghị</option>
+                                    <option>Giải thích</option>
+                                    <option>Phúc đáp</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Chủ đề</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Giáo dục</option>
+                                    <option>Yêu cầu</option>
+                                    <option>Kinh tế</option>
+                                    <option>Khoa học</option>
+                                    <option>Xã hội</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Lĩnh vực</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Giáo dục</option>
+                                    <option>Yêu cầu</option>
+                                    <option>Kinh tế</option>
+                                    <option>Khoa học</option>
+                                    <option>Xã hội</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Nội dung</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text" >
+                            </td>
+                        </tr>
+                    </table>
+                   </div>
+                   <div class="col-12 col-md-6 col-lg-4 mt-4 rounded" style="background-color: #efe2c5;">
+                    <table>
+                        <tr>
+                            <td style="padding-right: 20px;">Ký hiệu</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text" name="" id="" >
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Ngày ban hành</td>
+                            <td class="p-1">
+                                <input type="date" class="form-control edit-mode" value="dd-mm-yyyy">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Ngày hết hiệu lực</td>
+                            <td class="p-1">
+                                <input type="date" class="form-control edit-mode" value="dd-mm-yyyy">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Người gửi</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text" name="" id="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Trích yếu</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text" placeholder="">
+                            </td>
+                        </tr>
+                    </table>
+                   </div>
+                   <div class="col-12 col-md-6 col-lg-4 mt-4 rounded" style="background-color: rgb(227, 237, 205);">
+                    <table>
+                        <tr>
+                            <td style="padding-right: 20px;">Người duyệt</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Quản trị viên</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Nơi tiếp nhận</td>
+                            <td class="p-1">
+                                <select class="form-select">
+                                    <option>Phòng hành chính</option>
+                                    <option>Phòng marketing</option>
+                                    <option>Phòng kế toán</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Số trang</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px;">Số đến</td>
+                            <td class="p-1">
+                                <input class="form-control" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: px;">File văn bản</td>
+                            <td class="p-1">
+                                <input class="form-control" type="file">
+                            </td>
+                        </tr>
+                    </table>
+                   </div>
+                   <!--end-->
+                   
+                </div>
+               <div class="container-fluid row">
+                <div class="col-lg-4 mt-3">
+                    <button id="them" class="btn btn-primary" type="button">Thêm</button> 
+                </div>  
+                </div>
+                <div class="container-fluid mt-4">
+                    <div class="table-responsive overflow-auto">
+                        <table id="mytable" class="table table-striped">
+                            <thead>
+                              <tr class="table-primary">
+                                <th scope="col">STT</th>
+                                <th scope="col">Loại văn bản</th>
+                                <th scope="col">Nội dung</th>
+                                <th scope="col">Chủ đề</th>
+                                <th scope="col">Ký hiệu</th>
+                                <th scope="col">Người gửi</th>
+                                <th scope="col">Người nhận</th>
+                                <th scope="col">Thao tác</th>
+                                <th scope="col">Lưu</th>
+                              </tr>
+                            </thead>
+                            <tbody id="table-body">
+                              <tr>
+                                <td>01</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua1" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa1" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td> 
+                                <td>
+                                    <button id="luu1" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td> 
+                              </tr>
+                              <tr>
+                                <td>02</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua2" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa2" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu2" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>03</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua3" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa3" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu3" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>04</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua4" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa4" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu4" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>05</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua5" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa5" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu5" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>06</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua6" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa6" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu6" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>07</td>
+                                <td>Công văn</td>
+                                <td>Nhắc nhở</td>
+                                <td>Giáo dục</td>
+                                <td>1235</td>
+                                <td>Quản trị viên</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>
+                                    <button data-bs-toggle="modal" data-bs-target="#sua1" type="button" class="btn btn-success"><i class="bi bi-gear-fill"></i></button>
+                                    <button data-bs-toggle="modal" data-bs-target="#xoa1" type="button" class="btn btn-danger xoa1"><i class="bi bi-trash"></i></button>
+                                </td>   
+                                <td>
+                                    <button id="luu7" type="button" class="btn btn-success"><i class="bi bi-floppy me-2"></i>Lưu</button>
+                                </td>
+                              </tr>
+                              
+                              <!-- Thêm các hàng khác tương tự -->
+                            </tbody>
+                          </table>
+
+                          <div>
+                            <button id="xuat-tat-ca" type="button" class="btn btn-success"><i class="bi bi-floppy-fill me-2"></i>Xuất tất cả</button>
+                          </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+         $(document).ready(function(){
+            $('#banhanh').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+         $(document).ready(function(){
+            $('#hethan').datepicker({
+                format: 'dd/mm/yyyy',
+                autoclose: true,
+                todayHighlight: true
+            });
+        });
+        $(document).ready(function(){
+            $("#them").click(function(){
+                alert('Thêm thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu1").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu2").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu3").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu4").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu5").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu6").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#luu7").click(function(){
+                alert('Lưu thành công');
+            })
+        })
+        $(document).ready(function(){
+            $("#xuat-tat-ca").click(function(){
+                alert('Đã lưu tất cả thành công');
+            })
+        })
+        $(document).ready(function(){
+            $('#xoa').on('click', function(){
+                $(this).closest('tr').remove();
+            });
+        });
+        $(document).ready(function(){
+            $("#xac-nhan2").click(function(){
+                alert("Thành công");
+                $("#sua1").modal("hide");
+            })
+        })
+        $(document).ready(function() {
+      var rowToDelete;
+
+      $('.xoa1').click(function() {
+        rowToDelete = $(this).closest('tr');
+        $('#xoa1').modal('show');
+      });
+
+      $('#xac-nhan-xoa1').click(function() {
+        rowToDelete.remove();
+        $('#xoa1').modal('hide');
+      });
+    });
+    </script>
+
+     <!--sua1-->
+     <div class="modal" id="sua1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4>Sửa công văn</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                         <form action="">
+                            <div class="mb-3">
+                                <label for="id" class="form-label">STT</label>
+                                <input type="text" id="id" class="form-control" placeholder="STT">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="tenduan" class="form-label">Loại văn bản</label>
+                                <input type="text" id="tenduan" class="form-control" placeholder="Loại văn bản">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="mota" class="form-label">Nội dung</label>
+                                <input type="text" id="mota" class="form-control" placeholder="Nội dung">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="batdau" class="form-label">Ngày ban hành</label>
+                                <input type="date" id="batdau" class="form-control edit-mode" value="dd-mm-yyyy">
+                            </div>
+                            <div class="mb-3 mt-3">
+                                <label for="ketthuc" class="form-label">Ngày hết hiệu lực</label>
+                                <input type="date" id="ketthuc" class="form-control edit-mode" value="dd-mm-yyyy">
+                            </div>
+                         </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="xac-nhan2" type="submit" class="btn btn-primary">Xác nhận</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--xoa1-->
+    <div class="modal" id="xoa1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4>Xóa dự án</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                         <h4>Bạn có chắc chắn muốn xóa?</h4>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="xac-nhan-xoa1" type="submit" class="btn btn-primary">Xác nhận</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--ket thuc-->
+</body>
+</html>
